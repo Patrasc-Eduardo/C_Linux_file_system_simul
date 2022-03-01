@@ -1,0 +1,75 @@
+----------------------------------- TEMA 1 ---------------------------------------------------
+
+    touch():
+
+-Daca lista de fisiere este vida , cream un fisier si-l adaugam in lista.
+-Daca lista nu este vida, parcurgem lista si , daca nu gasim un fisier cu acelasi nume, adaugam fisierul la sfarsit.
+
+    mkdir():
+
+-Functia este implementata dupa aceleasi principii prezentate la touch() , doar ca de data aceasta vom adauga o structura de tip "Dir".
+
+    ls():
+
+-In functie vom parcurge lista de directoare si cea de fisiere si vom afisa mai intai directoarele si apoi fisierele din directorul parinte.
+
+    rm():
+
+-Verificam daca directorul parinte nu are fisiere si nu returnam nimic daca acesta este cazul.
+
+-Altfel, stergem nodul din lista inlantuita de fisiere.
+
+    rmdir():
+
+-Este o functie in care cautam recursiv directorul pe care vrem sa-l stergem.
+
+-Daca directorul este gasit, vom apela din nou functia rmdir() pentru a-i putea sterge si directoarele subalterne (si subalternele acestora...) , 
+ii stergem toate elementele din lista de fisiere si il stergem pe el in sine cu functia deleteNode() care se va asigura de stergerea acestuia din
+lista de directoare a parintelui sau.
+
+-Daca directorul nu este gasit, adica ajungem in urma apelurilor recursive la ultimul director din lista de directoare a lui home, atunci returnam
+mesajul de eroare aferent. Functia se foloseste de o var globala pentru a testa daca , in urma apelurilor recursive, nu a fost gasit directorul dorit.
+
+    cd():
+
+-Daca "name" este ".." ne deplasam pe directorul parinte al directorului curent.
+
+-Altfel, iteram prin lista de directoare a directorului curent si cand gasim directorul pe care il vrem, il accesam schimband adresa targetului.
+
+    pwd():
+
+-Pentru a afisa calea completa , vom merge ,  plecand din directorul curent , din parinte in parinte pana cand dam de "home" si vom atasa ,
+pe parcurs, la un string pe care vrem sa-l returnam , numele directorului curent. Numele directorului va fi pus de fiecare data la inceputul
+stringului final pentru a obtine rezultatul dorit.
+
+    stop():
+
+-Daca nu ne aflam in directorul radacina home atunci vom folosin functia cd() pentru a ajunge acolo.
+
+-Odata ajunsi in home, stergem recursiv toate directoarele acestuia folosind functia rmdir();
+
+-Stergem toate fisierele lui home.
+
+-Eliberam si memoria pentru home alocata in main().
+
+
+    tree():
+
+-Daca nu suntem in home, afisam numele directorului cu spatiile dorite.
+
+-Apelam recursiv functia tree() pentru subdirectoarele directorului curent.
+
+-Dupa apelul, la final,  pentru a obtine ierahia dorita, afisam si toate fisierele directorului curent cu spatiile dorite.
+
+    mv():
+
+-Parcurgem lista de directoare si fisiere. Daca "newname" se afla deja in liste afisam mesajul corespunzator. Daca gasim "oldname"
+adica directorul/fisierul pe care vrem sa-l modificam ii vom salva pozitia cu un pointer. Daca nu gasim "oldaname", se afiseaza
+mesajul de eroare corespunzator.
+
+-Adaugarea noului director se face prin alocarea de spatiu, preluarea pointerilor catre listele de directoare si fisiere a directorului vechi si preluarea
+pointerului catre parinte a directorului vechi. Se itereaza pana la sfarsit prin lista in care vrem sa adaugam. Adaugam nodul/directorul in lista dorita si 
+stergem directorul vechi din lista in care se afla.
+
+-Adaugarea noului fisier se face prin alocarea de spatiu, preluarea pointerului catre parinte a directorului vechi. Se itereaza pana la sfarsit prin lista in care vrem sa adaugam. 
+Adaugam nodul/fisierul in lista dorita si stergem directorul vechi din lista in care se afla.
